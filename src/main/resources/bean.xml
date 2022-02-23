@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--以后每写一个类就把它丢在bean.xml里面-->
+
+    <!-- 无参构造<property name="name" value="fax"/>  -->
+
+    <!--有参构造的第一种方式：下标赋值-->
+    <!--<bean id="user" class="com.kuang.pojo.User">
+        <constructor-arg index="0" value="狂神说java!"/>
+    </bean>-->
+
+    <!--&lt;!&ndash;有参构造的第二种方式：使用类型创建，不建议使用&ndash;&gt;
+    <bean id="user" class="com.kuang.pojo.User">
+        <constructor-arg type="java.lang.String" value="fax"/>
+    </bean>-->
+
+    <!--有参构造的第三种方式：直接通过参数名来设置-->
+    <bean id="user" class="com.kuang.pojo.User">
+        <constructor-arg name="name" value="Super"/>
+    </bean>
+
+
+    <!--每创建一个类，在Spring中一定要将它丢到bean.xml中-->
+    <!--<bean id="usert" class="com.kuang.pojo.UserT">
+
+    </bean>-->
+
+    <bean id="usert" class="com.kuang.pojo.UserT" name="t,e,w,d,s">
+        <property name="name" value="西部开源"/>
+     </bean>
+
+
+    <alias name="user" alias="ttt"/>
+    <!--
+    id: bean 的唯一标识符，也就是相当于我们学的对象名
+    class: bean 对象所对应的全限定名： 包名+类型
+    name:也是别名，但name就更随意了，使用,空格;都可以用来起多个别名。
+    -->
+</beans>
