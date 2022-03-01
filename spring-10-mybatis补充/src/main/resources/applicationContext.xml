@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--我们使用applicationContext.xml来管理总的配置文件。其它的都不需要动了。至于
+    spring-dao.xml中的配置信息，像datasource中的信息我们都不需要动了。
+    以及sqlSession中的信息也不需要改变。唯一需要改变的就是sqlSessionFactory中的配置信息需要改变一下即可。
+    -->
+    <!--但是spring中需要多加入一个实现类，因为spring中是自动创建，但是mybatis
+    无法自动创建，需要我们给一个set方法，然后在重写的方法中来做mybatis要做的事情。
+    -->
+    <import resource="spring-dao.xml"/>
+
+    <!--方式二，使用SqlSessionDaoSupport-->
+    <bean id="userMapper2" class="com.kuang.mapper.UserMapperImpl2">
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+    </bean>
+
+
+</beans>
